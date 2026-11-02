@@ -20,3 +20,5 @@ Built as parody. No genuine facts or financial/medical advice are implied.
 The project is hosted on [GitHub Pages](https://lovingthenhk-cpu.github.io/the-ai-slop/) from `main`. Releases v0.1–v0.5 were committed and deployed incrementally. Cache-busted CSS/JS URLs ensure each HTML release loads matching assets.
 
 - **v0.7:** Unicorn or Unhinged fictional startup pitch machine
+
+- **v0.8:** five-question Which Slop Are You personality quiz
