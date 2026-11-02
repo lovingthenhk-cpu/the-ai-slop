@@ -41,3 +41,21 @@ $('#exportArchive').addEventListener('click',()=>{const blob=new Blob([JSON.stri
 $('#clearArchive').addEventListener('click',()=>{if(!saved.length){toast('すでに空です');return}if(window.confirm('保存したSLOPをすべて削除しますか？')){saved=[];storage.set('slop.saved',saved);renderArchive();$('#saveResult').textContent='♡ SAVE';toast('すべて削除しました')}});
 $('#shareResult').addEventListener('click',async()=>{const link=new URL(location.href);link.hash='factory';link.searchParams.set('slop',currentQuote.slice(0,450));try{if(navigator.share&&location.protocol==='https:')await navigator.share({title:'The AI Slop',text:currentQuote,url:link.href});else{await navigator.clipboard.writeText(link.href);toast('共有リンクをコピーしました')}}catch(e){if(e.name!=='AbortError')toast('共有できませんでした')}});
 try{const incoming=new URLSearchParams(location.search).get('slop');if(incoming&&incoming.length<=450){currentQuote=incoming;$('#resultText').textContent=incoming;$('#resultTag').textContent='#SHARED SLOP';$('#outputState').textContent='SHARED WITH YOU';$('#saveResult').textContent=saved.includes(currentQuote)?'♥ SAVED':'♡ SAVE'}}catch{}
+// v0.3 — satirical scoring, emphatically NOT an AI-authorship detector.
+const scannerText=$('#scannerText');
+scannerText.addEventListener('input',()=>{$('#scannerChars').textContent=scannerText.value.length+' / 500 CHARS'});
+$('#scannerSample').addEventListener('click',()=>{scannerText.value=currentQuote.slice(0,500);scannerText.dispatchEvent(new Event('input'));toast('工場から怪しい文章を持ってきました')});
+$('#scannerRun').addEventListener('click',()=>{
+ const content=scannerText.value.trim();if(!content){toast('まず文章を入れてください');scannerText.focus();return}
+ const buzzwords=['革命','未来','最強','シナジー','革新','AI','量子','成功','絶対','驚愕','衝撃','本質','人生','運命','無料','激変','100%','99%','覚醒','進化','次世代'];
+ const matches=buzzwords.filter(w=>content.toLowerCase().includes(w.toLowerCase()));
+ const punctuation=(content.match(/[!！?？]/g)||[]).length;
+ const emoji=(content.match(/[\u{1F300}-\u{1FAFF}]/gu)||[]).length;
+ const caps=(content.match(/[A-Z]{3,}/g)||[]).length;
+ const hashtags=(content.match(/[#＃]/g)||[]).length;
+ const clickbait=/今すぐ|絶対|知らない|必見|拡散|保存|シェア|閲覧注意|速報/.test(content);
+ const score=Math.min(100,Math.round(8+matches.length*12+Math.min(punctuation,10)*4+Math.min(emoji,10)*3+Math.min(caps,5)*3+Math.min(hashtags,5)*3+(clickbait?16:0)+Math.min(content.length/12,15)));
+ $('#scannerScore').textContent=score;$('#scannerBar').style.width=score+'%';$('#scannerVerdict').textContent=score>=85?'CRITICAL: PEAK SLOP DETECTED':score>=55?'WARNING: HIGH SLOP POTENTIAL':score>=25?'MODERATE AMOUNTS OF NONSENSE':'LOW SLOP. TRY HARDER.';
+ const tags=[];if(matches.length)tags.push('BUZZWORDS ×'+matches.length);if(punctuation)tags.push('DRAMA ×'+punctuation);if(emoji)tags.push('EMOJIS ×'+emoji);if(clickbait)tags.push('CLICKBAIT ENERGY');if(caps)tags.push('CAPS LOCK');if(!tags.length)tags.push('SUSPICIOUSLY NORMAL');
+ const reasons=$('#scannerReasons');reasons.replaceChildren();tags.forEach(v=>{const span=document.createElement('span');span.textContent=v;reasons.append(span)});toast('架空の研究所が文章を採点しました');
+});
