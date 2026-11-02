@@ -32,3 +32,5 @@ The project is hosted on [GitHub Pages](https://lovingthenhk-cpu.github.io/the-a
 - **v1.2:** twelve cross-game achievements in the Slop Passport
 
 - **v1.3:** Slop Oracle offline rule-based parody chatbot
+
+- **v1.4:** all-zone responsive navigation menu and back-to-top shortcut

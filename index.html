@@ -9,8 +9,8 @@
   <meta name="description" content="The AI Slop — インターネットで一番どうでもいいコンテンツ工場。純度100%の人工的な無意味をお楽しみください。">
   <title>THE AI SLOP™ — Premium Garbage, Zero Calories</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=1.3">
-  <script src="app.js?v=1.3" defer></script>
+  <link rel="stylesheet" href="styles.css?v=1.4">
+  <script src="app.js?v=1.4" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">メインコンテンツへ</a>
@@ -18,7 +18,9 @@
   <header class="header">
     <a href="#top" class="logo" aria-label="The AI Slop ホーム"><span class="logo-mark">✳</span><span>the<span class="logo-accent">AI</span>slop<span class="logo-period">.</span></span></a>
     <nav class="nav" aria-label="メインナビゲーション"><a href="#factory">SLOP FACTORY</a><a href="#feed">THE FEED</a><a href="#lab">SLOP LAB</a><a href="#bingo">BINGO</a><a href="#venture">STARTUPS</a></nav>
+    <button id="mobileMenuToggle" class="zones-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="全コーナーを表示">☰ <span>ALL ZONES</span></button>
     <div class="header-end"><span class="status-dot"></span><span class="header-online">THE SLOP IS LIVE</span><a class="nav-cta" href="#factory">ENTER THE VOID <span aria-hidden="true">↗</span></a></div>
+    <nav id="mobileMenu" class="zones-menu" aria-label="全コーナー" hidden><a href="#factory">01 <span>SLOP FACTORY</span><b>↗</b></a><a href="#archive">02 <span>SLOP VAULT</span><b>↗</b></a><a href="#feed">03 <span>THE FEED</span><b>↗</b></a><a href="#lab">04 <span>SLOP LAB</span><b>↗</b></a><a href="#bingo">05 <span>BRAINROT BINGO</span><b>↗</b></a><a href="#poster">06 <span>POSTER STUDIO</span><b>↗</b></a><a href="#venture">07 <span>FAKE STARTUPS</span><b>↗</b></a><a href="#quiz">08 <span>PERSONALITY QUIZ</span><b>↗</b></a><a href="#alchemy">09 <span>SLOP ALCHEMY</span><b>↗</b></a><a href="#arcade">10 <span>DOOMSCROLL DEFENSE</span><b>↗</b></a><a href="#passport">11 <span>SLOP PASSPORT</span><b>↗</b></a><a href="#oracle">12 <span>THE ORACLE</span><b>↗</b></a></nav>
   </header>
   <main id="main">
     <section class="hero" id="top">
@@ -54,5 +56,6 @@
     <section class="oracle-zone section" id="oracle"><div class="section-heading"><div><div class="kicker"><span>11 / MEANINGLESS INTELLIGENCE, MAXIMUM CONFIDENCE</span></div><h2>ASK THE SLOP <em>ORACLE.</em></h2><p>質問してください。あなたが欲しかった答え以外の何かが返ってきます。</p></div><span class="oracle-sticker">0 TOKENS<br>OF INTELLIGENCE</span></div><div class="oracle-shell"><aside class="oracle-sidebar"><div class="oracle-icon">✳</div><h3>THE OMNISCIENT<br>IDIOT™</h3><p>質問に答えているようで、実は何も答えていない。そんなサービスです。</p><div class="oracle-facts"><div><span>MODEL</span><b>SLOP-0.0-MINI</b></div><div><span>INTELLIGENCE</span><b>DISPUTED</b></div><div><span>INFERENCE COST</span><b>$0.00</b></div><div><span>ACTUAL LLM</span><b>NO</b></div></div><div class="oracle-prompts"><span>TRY A QUESTION</span><button class="oracle-suggestion" data-question="どうすれば成功できますか？">↗ どうすれば成功できますか？</button><button class="oracle-suggestion" data-question="AIは人類を救いますか？">↗ AIは人類を救いますか？</button><button class="oracle-suggestion" data-question="今日の晩ごはんは？">↗ 今日の晩ごはんは？</button></div></aside><div class="oracle-chat"><div class="oracle-chat-head"><span class="live-indicator"></span> SLOP ORACLE ONLINE <button id="oracleClear">× CLEAR CHAT</button></div><div class="oracle-messages" id="oracleMessages" role="log" aria-label="架空のチャット応答" aria-live="polite"></div><form id="oracleForm" class="oracle-form"><label class="sr-only" for="oracleInput">質問を入力</label><input id="oracleInput" maxlength="280" autocomplete="off" required placeholder="何でも聞いてください（まともな答えは出ません）"><button type="submit" aria-label="送信">SEND ↗</button></form><div class="oracle-bottom">LOCAL RULE-BASED PARODY · NO AI API · NO UPLOAD · HISTORY STORED ON THIS DEVICE</div></div></div></section>
     <section class="outro"><div class="outro-noise" aria-hidden="true">✳</div><p>CONGRATULATIONS. YOU MADE IT THIS FAR.</p><h2>GO TOUCH<br><em>GRASS.</em></h2><a href="#top" class="btn btn-dark">OR DO IT ALL AGAIN ↑</a></section>
   </main>
+  <a id="backToTop" class="back-top" href="#top" aria-label="ページ先頭へ戻る" hidden>↑ TOP</a>
   <footer><a class="footer-logo" href="#top">the<span>AI</span>slop.</a><p>© <span id="year">2026</span> THE AI SLOP. ALL RIGHTS QUESTIONABLE.</p><p>HANDCRAFTED SATIRE · NO TRACKING · NO BACKEND · ALL VIBES</p></footer>
 </body></html>

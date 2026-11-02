@@ -162,3 +162,11 @@ function oracleSend(value){const msg=value.trim().slice(0,280);if(!msg)return;or
 $('#oracleForm').addEventListener('submit',e=>{e.preventDefault();oracleSend($('#oracleInput').value)});
 $$('.oracle-suggestion').forEach(b=>b.addEventListener('click',()=>oracleSend(b.dataset.question)));
 $('#oracleClear').addEventListener('click',()=>{oracleHistory=[];storage.set('slop.oracle.history',[]);renderOracle();toast('架空の会話履歴を消しました')});renderOracle();
+// v1.4 — keyboard-accessible menu and scroll-to-top for this increasingly huge site.
+const zonesToggle=$('#mobileMenuToggle'),zonesMenu=$('#mobileMenu');
+function setZonesOpen(open){zonesMenu.hidden=!open;zonesToggle.setAttribute('aria-expanded',String(open));zonesToggle.setAttribute('aria-label',open?'全コーナーを閉じる':'全コーナーを表示')}
+zonesToggle.addEventListener('click',()=>setZonesOpen(zonesMenu.hidden));
+zonesMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setZonesOpen(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!zonesMenu.hidden){setZonesOpen(false);zonesToggle.focus()}});
+document.addEventListener('click',e=>{if(!zonesMenu.hidden&&!zonesMenu.contains(e.target)&&!zonesToggle.contains(e.target))setZonesOpen(false)});
+const topLink=$('#backToTop');const updateTopLink=()=>{topLink.hidden=window.scrollY<950};window.addEventListener('scroll',updateTopLink,{passive:true});updateTopLink();
