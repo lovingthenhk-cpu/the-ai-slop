@@ -42,3 +42,5 @@ The project is hosted on [GitHub Pages](https://lovingthenhk-cpu.github.io/the-a
 - **v1.7:** procedurally varied fake feed and live text search
 
 - **v1.8:** Merge The Slop 2048-style game with keyboard swipe and save state
+
+- **v1.9:** Slop Observatory on-device activity analytics dashboard

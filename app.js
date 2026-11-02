@@ -204,3 +204,18 @@ $('#mergeBoard').addEventListener('keydown',e=>{const dirs={ArrowUp:'up',ArrowDo
 let mergeTouch=null;$('#mergeBoard').addEventListener('pointerdown',e=>{mergeTouch={x:e.clientX,y:e.clientY}});
 $('#mergeBoard').addEventListener('pointerup',e=>{if(!mergeTouch)return;const dx=e.clientX-mergeTouch.x,dy=e.clientY-mergeTouch.y;mergeTouch=null;if(Math.max(Math.abs(dx),Math.abs(dy))<22)return;mergeMove(Math.abs(dx)>Math.abs(dy)?dx>0?'right':'left':dy>0?'down':'up')});
 if(!mergeCells)mergeNew();else mergeRender();
+// v1.9 — private telemetry dashboard; reads ONLY values already in localStorage.
+const observatoryStats=[
+ {key:'GENS',title:'Quotes created',read:()=>storage.get('slop.generations',0)},
+ {key:'SAVES',title:'Saved quotes',read:()=>storage.get('slop.saved',[]).length},
+ {key:'POSTS',title:'Own posts',read:()=>storage.get('slop.userposts',[]).length},
+ {key:'BRAIN',title:'Braincell clicks',read:()=>storage.get('slop.brain',0)},
+ {key:'ALCHEMY',title:'Combos found',read:()=>storage.get('slop.alchemy.seen',[]).length},
+ {key:'VENTURES',title:'Fake investments',read:()=>storage.get('slop.ventures',[]).length},
+ {key:'ARCADE',title:'Arcade best',read:()=>storage.get('slop.arcade.best',0)},
+ {key:'MERGE',title:'Merge best score',read:()=>storage.get('slop.merge.best',0)}
+];
+function getObservatoryData(){return observatoryStats.map(s=>{let value=0;try{value=Math.max(0,Number(s.read())||0)}catch{}return{...s,value}})}
+function renderObservatory(){const data=getObservatoryData();const realScore=Math.min(99999,data.reduce((a,x)=>a+x.value,0)+Math.max(0,storage.get('slop.bingo.best',0))*50+(storage.get('slop.quiz.last',null)?20:0));$('#observatoryScore').textContent=realScore.toLocaleString('en-US');$('#observatoryRank').textContent=realScore>=2500?'SUPREME CONTENT WASTER':realScore>=500?'BRAINROT POWER USER':realScore>=100?'INTERMEDIATE SLOPPER':'JUST GETTING STARTED';const max=Math.max(1,...data.map(x=>Math.log10(x.value+1)));const bars=$('#observatoryBars');bars.replaceChildren();for(const x of data){const bar=document.createElement('div');bar.className='observatory-bar';bar.setAttribute('title',x.title+': '+x.value);const value=document.createElement('span');value.className='bar-value';value.textContent=x.value.toLocaleString('en-US');const body=document.createElement('div');body.className='bar-body';body.style.height=Math.max(4,(Math.log10(x.value+1)/max)*175)+'px';const name=document.createElement('span');name.className='bar-name';name.textContent=x.key;bar.append(value,body,name);bars.append(bar)}$('#observatoryLegend').textContent='Bars are log-scaled so a big click count will not hide all other metrics.';const cards=$('#observatoryMetrics');cards.replaceChildren();data.forEach(x=>{const el=document.createElement('div');el.className='observatory-metric';const strong=document.createElement('strong');strong.textContent=x.value.toLocaleString('en-US');const label=document.createElement('span');label.textContent=x.title.toUpperCase();el.append(strong,label);cards.append(el)})}
+$('#observatoryCopy').addEventListener('click',async()=>{renderObservatory();const rows=getObservatoryData().map(x=>x.title+': '+x.value);try{await navigator.clipboard.writeText('THE AI SLOP — MY PRIVATE STATISTICS\n'+rows.join('\n')+'\nAll stats are fictional-site activity, not public analytics.');toast('架空の生産性レポートをコピーしました')}catch{toast('コピーできませんでした')}});
+document.addEventListener('click',()=>setTimeout(renderObservatory,0));renderObservatory();
