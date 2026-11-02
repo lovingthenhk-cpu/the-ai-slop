@@ -28,3 +28,5 @@ The project is hosted on [GitHub Pages](https://lovingthenhk-cpu.github.io/the-a
 - **v1.0:** Doomscroll Defense thirty-second Canvas arcade game
 
 - **v1.1:** local user post composer with private persistent feed
+
+- **v1.2:** twelve cross-game achievements in the Slop Passport
