@@ -1,0 +1,13 @@
+{
+  "name": "THE AI SLOP — Premium Garbage, Zero Calories",
+  "short_name": "AI Slop",
+  "description": "Handmade nonsense, mini-games, and utterly unnecessary internet tools.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1a1325",
+  "theme_color": "#caff4d",
+  "lang": "ja",
+  "icons": [{"src":"./favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
