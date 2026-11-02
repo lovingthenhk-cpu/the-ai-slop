@@ -26,3 +26,5 @@ The project is hosted on [GitHub Pages](https://lovingthenhk-cpu.github.io/the-a
 - **v0.9:** Slop Alchemy with 216 collectable startup buzzword combos
 
 - **v1.0:** Doomscroll Defense thirty-second Canvas arcade game
+
+- **v1.1:** local user post composer with private persistent feed
