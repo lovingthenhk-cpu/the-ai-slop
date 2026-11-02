@@ -69,3 +69,6 @@ function drawBingo(){const board=$('#bingoBoard');board.replaceChildren();bingo.
 $('#shuffleBingo').addEventListener('click',()=>{bingo=freshBingo();storage.set('slop.bingo',bingo);drawBingo();toast('またしても無意味なビンゴを作りました')});
 $('#resetBingo').addEventListener('click',()=>{bingo.marks=[12];storage.set('slop.bingo',bingo);drawBingo();toast('すべての印をリセットしました')});
 drawBingo();
+
+// v0.5 — keep the Vault synchronized if it is already open.
+$('#saveResult').addEventListener('click',()=>{if(!archiveDrawer.hidden)renderArchive()});
