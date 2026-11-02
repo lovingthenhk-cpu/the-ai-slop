@@ -1,0 +1,11 @@
+{
+  "name": "the-ai-slop",
+  "version": "2.3.0",
+  "private": true,
+  "type": "module",
+  "description": "A handcrafted satirical static site with mini-games and pointless tools",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check app.js && node --check sw.js && npm test"
+  }
+}

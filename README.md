@@ -50,3 +50,5 @@ The project is hosted on [GitHub Pages](https://lovingthenhk-cpu.github.io/the-a
 - **v2.1:** sixteen achievements and automated PWA cache version upgrades
 
 - **v2.2:** schema-validated backups with rollback and Merge score preservation
+
+- **v2.3:** dependency-free smoke tests for IDs navigation PWA and accessibility
