@@ -188,3 +188,19 @@ document.addEventListener('click',()=>setTimeout(bunkerUpdate,0));bunkerUpdate()
 
 // v1.7 live feed search across locally authored and generated posts.
 $('#feedSearch').addEventListener('input',renderFeed);
+// v1.8 — deterministic rules for a 4x4 merge game; random spawn is the only chance element.
+let mergeCells=storage.get('slop.merge.board',null),mergeScore=storage.get('slop.merge.score',0),mergeBest=storage.get('slop.merge.best',0),mergeWon=storage.get('slop.merge.won',false);
+if(!Array.isArray(mergeCells)||mergeCells.length!==16||!mergeCells.every(v=>Number.isInteger(v)&&v>=0&&v<=65536))mergeCells=null;
+function mergeSpawn(){const empty=mergeCells.map((v,i)=>v===0?i:-1).filter(i=>i>=0);if(!empty.length)return;mergeCells[pick(empty)]=Math.random()<.9?2:4}
+function mergeNew(){mergeCells=Array(16).fill(0);mergeScore=0;mergeWon=false;mergeSpawn();mergeSpawn();mergeSave();mergeRender()}
+function mergeSave(){storage.set('slop.merge.board',mergeCells);storage.set('slop.merge.score',mergeScore);storage.set('slop.merge.best',mergeBest);storage.set('slop.merge.won',mergeWon)}
+function mergeRender(){const board=$('#mergeBoard');board.replaceChildren();mergeCells.forEach((value,i)=>{const tile=document.createElement('div');tile.className='merge-tile';tile.dataset.value=String(value);tile.textContent=value||'';tile.setAttribute('role','gridcell');tile.setAttribute('aria-label',`${Math.floor(i/4)+1}行${i%4+1}列、${value||'空き'}`);board.append(tile)});$('#mergeScore').textContent=mergeScore;$('#mergeBest').textContent=mergeBest}
+function mergeLine(line){const n=line.filter(v=>v!==0),out=[];for(let i=0;i<n.length;i++){if(n[i]===n[i+1]){out.push(n[i]*2);mergeScore+=n[i]*2;i++}else out.push(n[i])}while(out.length<4)out.push(0);return out}
+function mergeCanMove(){if(mergeCells.includes(0))return true;for(let r=0;r<4;r++)for(let c=0;c<4;c++){const v=mergeCells[r*4+c];if(c<3&&v===mergeCells[r*4+c+1])return true;if(r<3&&v===mergeCells[(r+1)*4+c])return true}return false}
+function mergeMove(direction){if(!['left','right','up','down'].includes(direction))return;const before=mergeCells.join(',');for(let n=0;n<4;n++){const indexes=Array.from({length:4},(_,m)=>direction==='left'||direction==='right'?n*4+m:m*4+n);if(direction==='right'||direction==='down')indexes.reverse();const results=mergeLine(indexes.map(i=>mergeCells[i]));indexes.forEach((idx,j)=>{mergeCells[idx]=results[j]})}if(before===mergeCells.join(','))return;mergeSpawn();mergeBest=Math.max(mergeBest,mergeScore);mergeSave();mergeRender();if(!mergeWon&&mergeCells.some(x=>x>=2048)){mergeWon=true;storage.set('slop.merge.won',true);$('#mergeMessage').textContent='2048達成！あなたはインターネットの王です。続けることもできます。';toast('2048 MERGE! ALL HAIL THE SLOP!')}else if(!mergeCanMove()){$('#mergeMessage').textContent='GAME OVER — 盤面が埋まりました。NEW GAMEで再挑戦！';toast('THE SLOP HAS CONSUMED YOU')}else $('#mergeMessage').textContent='同じ数字を合体して、2048を目指そう。'}
+$('#mergeReset').addEventListener('click',()=>{if(mergeScore>0&&!confirm('現在の合体ゲームをリセットしますか？（ベストスコアは残ります）'))return;mergeNew();$('#mergeMessage').textContent='新しいゲームが始まりました。'});
+$$('.merge-controls button').forEach(b=>b.addEventListener('click',()=>mergeMove(b.dataset.direction)));
+$('#mergeBoard').addEventListener('keydown',e=>{const dirs={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right'};if(dirs[e.key]){e.preventDefault();mergeMove(dirs[e.key])}});
+let mergeTouch=null;$('#mergeBoard').addEventListener('pointerdown',e=>{mergeTouch={x:e.clientX,y:e.clientY}});
+$('#mergeBoard').addEventListener('pointerup',e=>{if(!mergeTouch)return;const dx=e.clientX-mergeTouch.x,dy=e.clientY-mergeTouch.y;mergeTouch=null;if(Math.max(Math.abs(dx),Math.abs(dy))<22)return;mergeMove(Math.abs(dx)>Math.abs(dy)?dx>0?'right':'left':dy>0?'down':'up')});
+if(!mergeCells)mergeNew();else mergeRender();
