@@ -22,3 +22,5 @@ The project is hosted on [GitHub Pages](https://lovingthenhk-cpu.github.io/the-a
 - **v0.7:** Unicorn or Unhinged fictional startup pitch machine
 
 - **v0.8:** five-question Which Slop Are You personality quiz
+
+- **v0.9:** Slop Alchemy with 216 collectable startup buzzword combos
