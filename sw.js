@@ -1,6 +1,6 @@
 /* The AI Slop: offline-first shell. Never caches third-party URLs or user data. */
-const CACHE = 'the-ai-slop-v2.0';
-const SHELL = ['./','./index.html','./styles.css?v=2.0','./app.js?v=2.0','./favicon.svg','./manifest.webmanifest'];
+const CACHE = 'the-ai-slop-v2.1';
+const SHELL = ['./','./index.html','./styles.css?v=2.1','./app.js?v=2.1','./favicon.svg','./manifest.webmanifest'];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));
 });

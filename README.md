@@ -46,3 +46,5 @@ The project is hosted on [GitHub Pages](https://lovingthenhk-cpu.github.io/the-a
 - **v1.9:** Slop Observatory on-device activity analytics dashboard
 
 - **v2.0:** installable offline-ready PWA shell and versioned cache
+
+- **v2.1:** sixteen achievements and automated PWA cache version upgrades
