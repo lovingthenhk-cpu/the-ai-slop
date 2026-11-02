@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#171125">
+  <meta name="description" content="The AI Slop — インターネットで一番どうでもいいコンテンツ工場。純度100%の人工的な無意味をお楽しみください。">
+  <title>THE AI SLOP™ — Premium Garbage, Zero Calories</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">メインコンテンツへ</a>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <header class="header">
+    <a href="#top" class="logo" aria-label="The AI Slop ホーム"><span class="logo-mark">✳</span><span>the<span class="logo-accent">AI</span>slop<span class="logo-period">.</span></span></a>
+    <nav class="nav" aria-label="メインナビゲーション"><a href="#factory">SLOP FACTORY</a><a href="#feed">THE FEED</a><a href="#lab">SLOP LAB</a></nav>
+    <div class="header-end"><span class="status-dot"></span><span class="header-online">THE SLOP IS LIVE</span><a class="nav-cta" href="#factory">ENTER THE VOID <span aria-hidden="true">↗</span></a></div>
+  </header>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-text">
+        <div class="eyebrow"><span class="spark">✦</span> THE FUTURE OF ABSOLUTELY NOTHING <span class="spark">✦</span></div>
+        <h1>TOO MUCH<br><span class="hero-outline">CONTENT.</span><br><span class="hero-gradient">ZERO SOUL.</span></h1>
+        <p class="hero-desc">インターネットはもう十分に変です。<br>でも、<strong>もっと変にできる</strong>と思いませんか？</p>
+        <div class="hero-actions"><a class="btn btn-lime btn-big" href="#factory">LET'S MAKE SLOP <span>↗</span></a><a class="btn btn-ghost" href="#feed">EXPLORE THE BRAINROT ↓</a></div>
+        <div class="hero-footer"><div class="tiny-avatars" aria-hidden="true"><span>👁️</span><span>🤖</span><span>🫠</span><span>🦆</span></div><p><strong id="totalSlops">10,482</strong> pieces of questionable content<br><small>and counting. unfortunately.</small></p></div>
+      </div>
+      <div class="hero-art" aria-label="ネオン色の器から絵文字のコンテンツがあふれるイラスト" role="img"><div class="art-label art-label-top">CERTIFIED <b>100% SLOP</b></div><span class="art-sticker art-sticker-1">👁️</span><span class="art-sticker art-sticker-2">🧠</span><span class="art-sticker art-sticker-3">💸</span><span class="art-sticker art-sticker-4">✨</span><div class="art-ring art-ring-one"></div><div class="art-ring art-ring-two"></div><div class="art-blob"><span>🫠</span></div><div class="art-label art-label-bottom">ARTIFICIALLY<br>UNINTELLIGENT™</div><span class="art-star art-star-1">✳</span><span class="art-star art-star-2">✳</span></div>
+      <div class="hero-side-note">SCROLL TO LOSE BRAINCELLS <span>↓</span></div>
+    </section>
+    <div class="marquee" aria-label="人工的に生成した無意味・無限のコンテンツ・ゼロの責任"><div class="marquee-track" aria-hidden="true"><span>✳ NO THOUGHTS, JUST TOKENS</span><span>✳ INFINITE CONTENT</span><span>✳ HUMANITY WAS A MISTAKE</span><span>✳ 100% ARTIFICIALLY AUTHENTIC</span><span>✳ NO THOUGHTS, JUST TOKENS</span><span>✳ INFINITE CONTENT</span><span>✳ HUMANITY WAS A MISTAKE</span><span>✳ 100% ARTIFICIALLY AUTHENTIC</span></div></div>
+    <section class="factory section" id="factory"><div class="section-heading"><div><div class="kicker"><span>01 / THE PRODUCTION LINE</span></div><h2>THE SLOP <em>FACTORY.</em></h2><p>数秒で、誰も頼んでいないコンテンツを生産しましょう。</p></div><div class="heading-symbol" aria-hidden="true">⚙</div></div>
+      <div class="factory-layout"><div class="factory-control panel"><div class="panel-heading"><span class="live-indicator"></span> GENERATOR CONTROL PANEL <span class="panel-index">v.0.1</span></div><label class="field-label">01 — SELECT YOUR FLAVOR</label><div class="flavors" id="flavors" role="group" aria-label="コンテンツの種類"><button class="flavor active" data-flavor="hustle" aria-pressed="true">💰 成功哲学</button><button class="flavor" data-flavor="cosmic" aria-pressed="false">🔮 宇宙の真理</button><button class="flavor" data-flavor="tech" aria-pressed="false">🤖 AI革命</button><button class="flavor" data-flavor="food" aria-pressed="false">🍝 食べ物</button></div><label class="field-label" for="chaos">02 — ADJUST THE NONSENSE <span id="chaosLabel">LEVEL 3 / 5</span></label><input id="chaos" type="range" min="1" max="5" value="3"><div class="range-labels"><span>MILD CRINGE</span><span>FULL BRAINROT</span></div><button id="generate" class="btn btn-purple btn-generate">✳ GENERATE PREMIUM GARBAGE <span>↗</span></button><p class="control-footnote">✧ Powered by locally sourced randomness. No API, no real AI, no excuses.</p></div>
+      <div class="factory-output panel" id="resultPanel"><div class="panel-heading"><span class="live-indicator violet"></span> THE OUTPUT <span class="output-state" id="outputState">READY TO DISAPPOINT</span></div><div class="output-content"><div class="output-meta"><span class="result-tag" id="resultTag">#MOTIVATION</span><span class="result-id" id="resultId">SLOP-000001</span></div><div class="output-emoji" id="resultEmoji">💸</div><p class="output-quote" id="resultText" aria-live="polite">「成功者は朝5時に起きる。でも私はそもそも寝ていない。これが差です。」</p><div class="output-signature">— probably an AI on LinkedIn</div></div><div class="output-actions"><button class="action-btn" id="copyResult">⧉ COPY SLOP</button><button class="action-btn" id="saveResult">♡ SAVE</button><button class="action-btn" id="remixResult">↻ REMIX</button><span class="output-watermark">QUALITY NOT GUARANTEED ©</span></div></div></div>
+    </section>
+    <section class="feed section" id="feed"><div class="section-heading feed-heading"><div><div class="kicker"><span>02 / THE ENDLESS ABYSS</span></div><h2>FRESH FROM <em>THE VOID.</em></h2><p>あなたのタイムラインに流れてくる、あの感じ。</p></div><div class="feed-filters" role="group" aria-label="フィードフィルター"><button class="filter active" data-filter="all" aria-pressed="true">ALL POSTS</button><button class="filter" data-filter="cursed" aria-pressed="false">CURSED</button><button class="filter" data-filter="inspirational" aria-pressed="false">INSPIRATIONAL</button></div></div><div class="feed-grid" id="feedGrid"></div><div class="feed-more"><button class="btn btn-outline" id="loadMore">LOAD MORE NONSENSE <span>↓</span></button><p>You've scrolled too far. Keep going.</p></div></section>
+    <section class="lab section" id="lab"><div class="section-heading"><div><div class="kicker"><span>03 / RESEARCH & DISAPPOINTMENT</span></div><h2>THE SLOP <em>LAB.</em></h2><p>科学っぽい何かを使って、無意味を数値化します。</p></div></div><div class="lab-grid"><article class="lab-card clicker-card"><div class="lab-number">EXPERIMENT #001</div><h3>BRAINROT<br>CLICKER</h3><p>タップするたびに脳細胞が（概念上）減ります。</p><button id="brainButton" class="brain-button" aria-label="脳をタップ">🧠</button><div class="clicker-score"><strong id="brainCount">0</strong><span>BRAINCELLS LOST</span></div><p class="lab-disclaimer">* No actual braincells were harmed.</p></article><article class="lab-card meter-card"><div class="lab-number">EXPERIMENT #002</div><h3>YOUR DAILY<br>SLOP INDEX</h3><p>現在のインターネットの状態をとても適当に算出します。</p><div class="meter"><div class="meter-circle"><span class="meter-number" id="slopIndex">98</span><span class="meter-percent">/ 100</span></div></div><div class="meter-caption"><span class="live-indicator"></span><span id="indexDescription">CRITICALLY ONLINE</span></div><button id="recalculate" class="meter-refresh">↻ RECALCULATE SCIENCE</button></article><article class="lab-card manifesto-card"><div class="lab-number">OUR VERY SERIOUS MANIFESTO</div><div class="manifesto-icon">✳</div><h3>WHY DOES<br>THIS EXIST?</h3><p>インターネットがコンテンツで溢れるなら、いっそ「無意味さ」を作品にしてしまおう。</p><p>これは、AIっぽい空虚さを人間が手作りした風刺サイトです。実際のAIによる生成ではありません。</p><div class="manifesto-sign">MADE WITH <span>♥</span> & QUESTIONABLE JUDGMENT</div></article></div></section>
+    <section class="outro"><div class="outro-noise" aria-hidden="true">✳</div><p>CONGRATULATIONS. YOU MADE IT THIS FAR.</p><h2>GO TOUCH<br><em>GRASS.</em></h2><a href="#top" class="btn btn-dark">OR DO IT ALL AGAIN ↑</a></section>
+  </main>
+  <footer><a class="footer-logo" href="#top">the<span>AI</span>slop.</a><p>© <span id="year">2026</span> THE AI SLOP. ALL RIGHTS QUESTIONABLE.</p><p>HANDCRAFTED SATIRE · NO TRACKING · NO BACKEND · ALL VIBES</p></footer>
+</body></html>
